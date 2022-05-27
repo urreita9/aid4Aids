@@ -1,11 +1,12 @@
 import './App.css';
+import { Register } from './components/Register/Register';
 
 function App() {
-  return (
-    <div className="App">
-     <h1>Hello World!</h1>
-    </div>
-  );
+	return (
+		<div className='App'>
+			<Register />
+		</div>
+	);
 }
 
 export default App;
