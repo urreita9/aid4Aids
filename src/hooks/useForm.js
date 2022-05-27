@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const useForm = (initialState = {}, onSubmit) => {
+export const useForm = (initialState = {}, onSubmit, action) => {
 	const [form, setForm] = useState(initialState);
 
 	const handleInputChange = (e) => {
@@ -9,6 +9,13 @@ export const useForm = (initialState = {}, onSubmit) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		if (action === 'login') {
+			onSubmit(form);
+		} else if (action === 'register') {
+			onSubmit(form);
+		} else {
+			return;
+		}
 	};
 
 	return { form, handleInputChange, handleSubmit };

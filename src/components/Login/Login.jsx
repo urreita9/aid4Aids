@@ -15,5 +15,16 @@ export const Login = () => {
 			type: 'password',
 		},
 	];
-	return <Form fieldsArr={fieldsArr} formTitle='Login' buttonText='Login' />;
+	const onSubmit = (form) => {
+		console.log('login');
+	};
+	return (
+		<Form
+			fieldsArr={fieldsArr}
+			formTitle='Login'
+			buttonText='Login'
+			action='login'
+			onSubmit={onSubmit}
+		/>
+	);
 };

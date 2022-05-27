@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useMemo } from 'react';
 import { useForm } from '../../hooks/useForm';
 import {
 	FormContainer,
@@ -10,12 +10,26 @@ import {
 	SubmitButton,
 } from './Styled';
 
-export const Form = ({ fieldsArr, formTitle, buttonText }) => {
-	const { form, handleInputChange, handleSubmit } = useForm({
-		// name: '',
-		// email: '',
-		// password: '',
-	});
+const prepareForm = (formArr) => {
+	return formArr.reduce((r, v) => ({ ...r, [v.name]: '' }), {});
+};
+
+export const Form = ({
+	fieldsArr,
+	formTitle,
+	buttonText,
+	action,
+	onSubmit,
+}) => {
+	const initialForm = useMemo(() => prepareForm(fieldsArr), [fieldsArr]);
+
+	const { form, handleInputChange, handleSubmit } = useForm(
+		{
+			...initialForm,
+		},
+		onSubmit,
+		action
+	);
 
 	return (
 		<FormContainer>

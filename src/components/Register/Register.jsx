@@ -20,7 +20,16 @@ export const Register = () => {
 			type: 'password',
 		},
 	];
+	const onSubmit = () => {
+		console.log('register');
+	};
 	return (
-		<Form fieldsArr={fieldsArr} formTitle='Register' buttonText='Register' />
+		<Form
+			fieldsArr={fieldsArr}
+			formTitle='Register'
+			buttonText='Register'
+			action='register'
+			onSubmit={onSubmit}
+		/>
 	);
 };
