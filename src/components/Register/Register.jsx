@@ -27,9 +27,10 @@ export const Register = () => {
 		<Form
 			fieldsArr={fieldsArr}
 			formTitle='Register'
-			buttonText='Register'
+			buttonText='Sign Up'
 			action='register'
 			onSubmit={onSubmit}
+			link='login'
 		/>
 	);
 };

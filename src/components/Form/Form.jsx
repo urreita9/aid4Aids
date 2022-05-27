@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 import {
 	FormContainer,
@@ -20,9 +21,11 @@ export const Form = ({
 	buttonText,
 	action,
 	onSubmit,
+	link,
 }) => {
 	const initialForm = useMemo(() => prepareForm(fieldsArr), [fieldsArr]);
 
+	const [linkText, setLinkText] = useState('');
 	const { form, handleInputChange, handleSubmit } = useForm(
 		{
 			...initialForm,
@@ -30,6 +33,14 @@ export const Form = ({
 		onSubmit,
 		action
 	);
+
+	useEffect(() => {
+		if (link === 'login') {
+			setLinkText('Already have an Account?');
+		} else if (link === 'register') {
+			setLinkText("Don't have an Account?");
+		}
+	}, [link]);
 
 	return (
 		<FormContainer>
@@ -50,6 +61,9 @@ export const Form = ({
 			</FormSeparator>
 			<FormSeparator>
 				<SubmitButton onClick={handleSubmit}>{buttonText}</SubmitButton>
+				<br />
+
+				{link?.length && <Link to={`/${link}`}>{linkText}</Link>}
 			</FormSeparator>
 		</FormContainer>
 	);

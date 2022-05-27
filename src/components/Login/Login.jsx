@@ -22,9 +22,10 @@ export const Login = () => {
 		<Form
 			fieldsArr={fieldsArr}
 			formTitle='Login'
-			buttonText='Login'
+			buttonText='Sign In'
 			action='login'
 			onSubmit={onSubmit}
+			link='register'
 		/>
 	);
 };
