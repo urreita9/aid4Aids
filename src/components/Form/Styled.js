@@ -1,15 +1,23 @@
 import styled from 'styled-components';
 
 export const FormContainer = styled.form`
-	width: 100%;
+	width: 90%;
 	height: 100%;
 	max-width: 400px;
 	height: 500px;
 	display: flex;
 	flex-direction: column;
-	background-color: tomato;
+	/* background-color: tomato; */
 	border-width: 5px;
 	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+`;
+
+export const FormSeparator = styled.div`
+	width: 100%;
 `;
 
 export const FormTitle = styled.h2`
@@ -41,7 +49,14 @@ export const FormInput = styled.input`
 `;
 
 export const SubmitButton = styled.button`
-	width: 60%;
+	width: 80%;
+	font-size: 14px;
+	font-weight: 600;
 	margin: 0 auto;
-	background-color: green;
+	border-radius: 5px;
+	padding: 10px;
+	color: black;
+	border-width: 0;
+	background-color: #86b2fa;
+	cursor: pointer;
 `;

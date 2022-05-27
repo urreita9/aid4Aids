@@ -20,5 +20,7 @@ export const Register = () => {
 			type: 'password',
 		},
 	];
-	return <Form fieldsArr={fieldsArr} />;
+	return (
+		<Form fieldsArr={fieldsArr} formTitle='Register' buttonText='Register' />
+	);
 };
