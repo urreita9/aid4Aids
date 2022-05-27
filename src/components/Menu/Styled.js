@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const MenuContainer = styled.div`
 	display: flex;
+	margin-top: 20px;
 `;
 
 export const MenuButton = styled.button`
