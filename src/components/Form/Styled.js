@@ -4,7 +4,6 @@ export const FormContainer = styled.form`
 	width: 90%;
 	height: 100%;
 	max-width: 400px;
-	height: 500px;
 	display: flex;
 	flex-direction: column;
 	/* background-color: tomato; */

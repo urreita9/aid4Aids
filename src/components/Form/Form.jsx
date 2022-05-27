@@ -11,6 +11,14 @@ import {
 	SubmitButton,
 } from './Styled';
 
+const linkStyle = {
+	textDecoration: 'none',
+	color: '#86B2FA',
+	hover: {
+		textDecoration: 'underline',
+	},
+};
+
 const prepareForm = (formArr) => {
 	return formArr.reduce((r, v) => ({ ...r, [v.name]: '' }), {});
 };
@@ -43,13 +51,13 @@ export const Form = ({
 	}, [link]);
 
 	return (
-		<FormContainer>
+		<FormContainer autoComplete='off'>
 			<FormSeparator>
 				<FormTitle>{formTitle}</FormTitle>
 
 				{fieldsArr.map((field, i) => (
 					<FormControl key={i}>
-						<FormLabel>{field.label}</FormLabel>
+						<FormLabel htmlFor={field.name}>{field.label}</FormLabel>
 						<FormInput
 							name={field.name}
 							type={field.type}
@@ -63,7 +71,11 @@ export const Form = ({
 				<SubmitButton onClick={handleSubmit}>{buttonText}</SubmitButton>
 				<br />
 
-				{link?.length && <Link to={`/${link}`}>{linkText}</Link>}
+				{link?.length && (
+					<Link to={`/${link}`} style={linkStyle}>
+						{linkText}
+					</Link>
+				)}
 			</FormSeparator>
 		</FormContainer>
 	);
