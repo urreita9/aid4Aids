@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form } from '../Form/Form';
+import { RegisterContainer } from './Styled';
 // import { RegisterContainer, Title, TitleContainer } from './Styled';
 
 export const Register = () => {
@@ -24,13 +25,15 @@ export const Register = () => {
 		console.log('register');
 	};
 	return (
-		<Form
-			fieldsArr={fieldsArr}
-			formTitle='Register'
-			buttonText='Sign Up'
-			action='register'
-			onSubmit={onSubmit}
-			link='login'
-		/>
+		<RegisterContainer>
+			<Form
+				fieldsArr={fieldsArr}
+				formTitle='Register'
+				buttonText='Sign Up'
+				action='register'
+				onSubmit={onSubmit}
+				link='login'
+			/>
+		</RegisterContainer>
 	);
 };

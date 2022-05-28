@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 export const ProductContainer = styled.div`
 	display: flex;
+	justify-content: center;
 	margin-top: 30px;
+
 	@media (min-width: 768px) {
 		margin-top: 0;
 	}
@@ -21,7 +23,7 @@ export const ProductImage = styled.div`
 	height: 100%;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size: contain;
+	background-size: cover;
 `;
 export const ProductISBN = styled.p`
 	margin: 0;

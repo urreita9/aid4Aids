@@ -23,6 +23,7 @@ export const Logo = styled.div`
 	background-size: contain;
 	margin-left: 20px;
 	border-radius: 50%;
+	cursor: pointer;
 `;
 
 export const CartContainer = styled.div`
