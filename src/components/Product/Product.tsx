@@ -37,8 +37,8 @@ export const Product = () => {
 				<ProductPrice>$42.26</ProductPrice>
 				<ProductAuthor>Tony Tony</ProductAuthor>
 				<ProductEditorial>Capaldo</ProductEditorial>
+				<button onClick={handleClick}>Add to Cart</button>
 			</ProductColumn>
-			<button onClick={handleClick}>Add to Cart</button>
 		</ProductContainer>
 	);
 };
