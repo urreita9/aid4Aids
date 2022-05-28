@@ -1,4 +1,5 @@
-import React from 'react';
+import { added } from '../../features/cart/cartSlice';
+import { useAppDispatch } from '../../app/hooks';
 import {
 	ProductAuthor,
 	ProductColumn,
@@ -11,6 +12,20 @@ import {
 } from './Styled';
 
 export const Product = () => {
+	const dispatch = useAppDispatch();
+	const handleClick = () => {
+		dispatch(
+			added({
+				title: 'holo',
+				author: 'Lazarolo',
+				price: 23,
+				imgURL:
+					'https://images-na.ssl-images-amazon.com/images/I/81EwuoduKML.jpg',
+				isbn: 1951627547,
+				publisher: 'Arcade',
+			})
+		);
+	};
 	return (
 		<ProductContainer>
 			<ProductColumn>
@@ -23,6 +38,7 @@ export const Product = () => {
 				<ProductAuthor>Tony Tony</ProductAuthor>
 				<ProductEditorial>Capaldo</ProductEditorial>
 			</ProductColumn>
+			<button onClick={handleClick}>Add to Cart</button>
 		</ProductContainer>
 	);
 };
