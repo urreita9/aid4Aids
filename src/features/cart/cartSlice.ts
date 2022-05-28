@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Product } from '../../components/Product/Product';
 
 interface Product {
 	isbn: number;
@@ -23,7 +22,7 @@ const cartSlice = createSlice({
 	initialState,
 	reducers: {
 		//Add
-		added(state, action) {
+		added(state, action: PayloadAction<Product>) {
 			state.products = [...state.products, action.payload];
 		},
 		//Remove
