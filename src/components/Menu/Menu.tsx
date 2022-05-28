@@ -1,7 +1,15 @@
 import React from 'react';
 import { MenuButton, MenuContainer } from './Styled';
 
-export const Menu = ({ options }) => {
+interface Option {
+	text: string;
+	onClick: () => void;
+}
+interface Props {
+	options: Option[];
+}
+
+export const Menu = ({ options }: Props) => {
 	return (
 		<MenuContainer>
 			{options.map((option, i) => (

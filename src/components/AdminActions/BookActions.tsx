@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Form } from '../Form/Form';
+import { Field, Form } from '../Form/Form';
 import { Menu } from '../Menu/Menu';
 
 export const BookActions = () => {
 	const [formType, setFormType] = useState('add');
-	const fieldsArr = [
+	const fieldsArr: Field[] = [
 		{
 			label: 'ISBN',
 			name: 'isbn',

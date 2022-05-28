@@ -1,13 +1,13 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
+import { FormTitle } from './Styled';
 import {
 	FormContainer,
 	FormControl,
 	FormInput,
 	FormLabel,
 	FormSeparator,
-	FormTitle,
 	SubmitButton,
 } from './Styled';
 
@@ -18,8 +18,21 @@ const linkStyle = {
 		textDecoration: 'underline',
 	},
 };
+export interface Field {
+	label: string;
+	name: string;
+	type: string;
+}
+interface Props {
+	fieldsArr: Field[];
+	formTitle: string;
+	buttonText: string;
+	action: string;
+	onSubmit: () => void;
+	link?: string;
+}
 
-const prepareForm = (formArr) => {
+const prepareForm = (formArr: Field[]) => {
 	return formArr.reduce((r, v) => ({ ...r, [v.name]: '' }), {});
 };
 
@@ -30,11 +43,11 @@ export const Form = ({
 	action,
 	onSubmit,
 	link,
-}) => {
+}: Props) => {
 	const initialForm = useMemo(() => prepareForm(fieldsArr), [fieldsArr]);
 
 	const [linkText, setLinkText] = useState('');
-	const { form, handleInputChange, handleSubmit } = useForm(
+	const { form, handleInputChange, handleSubmit }: any = useForm(
 		{
 			...initialForm,
 		},

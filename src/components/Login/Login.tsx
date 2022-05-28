@@ -15,7 +15,7 @@ export const Login = () => {
 			type: 'password',
 		},
 	];
-	const onSubmit = (form) => {
+	const onSubmit = () => {
 		console.log('login');
 	};
 	return (

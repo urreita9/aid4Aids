@@ -6,6 +6,12 @@ export const NavBarContainer = styled.nav`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	background: rgb(137, 207, 240);
+	background: linear-gradient(
+		90deg,
+		rgba(137, 207, 240, 1) 35%,
+		rgba(0, 102, 178, 1) 97%
+	);
 `;
 
 export const Logo = styled.div`
@@ -16,4 +22,5 @@ export const Logo = styled.div`
 	background-position: center;
 	background-size: contain;
 	margin-left: 10px;
+	border-radius: 50%;
 `;
