@@ -4,7 +4,7 @@ export const ListContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	max-width: 1600px;
-
+	margin: 0 auto;
 	@media (min-width: 768px) {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
