@@ -28,7 +28,7 @@ interface Props {
 	formTitle: string;
 	buttonText: string;
 	action: string;
-	onSubmit: () => void;
+	onSubmit: (a: any) => void;
 	link?: string;
 }
 
