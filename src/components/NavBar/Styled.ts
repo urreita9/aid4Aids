@@ -21,6 +21,24 @@ export const Logo = styled.div`
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;
-	margin-left: 10px;
+	margin-left: 20px;
 	border-radius: 50%;
+`;
+
+export const CartContainer = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	padding: 10px;
+`;
+
+export const CartAmount = styled.span`
+	margin-right: 20px;
+	border: 1px solid #ffffff;
+	padding: 5px;
+	width: 20px;
+	border-radius: 50%;
+	background-color: #ffffff;
+	font-weight: 500;
 `;
