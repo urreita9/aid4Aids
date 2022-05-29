@@ -66,7 +66,7 @@ Although we have both forms, only the login form works by simulating it with a r
 - Styles: Styled-Components.
 
 <p align='left'>
-    <img src='./desktopCart.png' </img>
+    <img height="150" src='./desktopCart.png' </img>
 </p>
 <p align='left'>
     <img src='./desktopHome.png' </img>
