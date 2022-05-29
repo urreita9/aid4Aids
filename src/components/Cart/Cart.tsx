@@ -20,7 +20,7 @@ interface Props {
 }
 
 export const Cart = ({ toggle, isOpen }: Props) => {
-	const [cartTotal, setCartTotal] = useState(0);
+	const [totals, setTotals] = useState({ price: 0, quantity: 0 });
 	const { products } = useAppSelector((state) => state.cart);
 	const { logged } = useAppSelector((state) => state.user);
 	const dispatch = useAppDispatch();
@@ -34,8 +34,21 @@ export const Cart = ({ toggle, isOpen }: Props) => {
 	}, [products.length]);
 
 	const countTotal = () => {
-		const total = products.reduce((accum, product) => accum + product.price, 0);
-		setCartTotal(+total.toFixed(2));
+		const totalPrice = products.map(
+			(product) => product.price * product.amount
+		);
+		const totalPriceReduced = totalPrice.reduce(
+			(accum, productPriceAmount) => accum + productPriceAmount,
+			0
+		);
+		const totalQuantity = products.reduce(
+			(accum, product) => accum + product.amount,
+			0
+		);
+		setTotals({
+			price: +totalPriceReduced.toFixed(2),
+			quantity: totalQuantity,
+		});
 	};
 
 	const handleCheckout = () => {
@@ -58,16 +71,19 @@ export const Cart = ({ toggle, isOpen }: Props) => {
 				<CartProductsContainer>
 					{products.map((product) => (
 						<CartProduct
+							id={product.id}
 							imgURL={product.imgURL}
 							title={product.title}
 							price={product.price}
+							amount={product.amount}
 						/>
 					))}
 				</CartProductsContainer>
 
 				<CartNumbers>
 					<CartNumber>{products?.length} Items</CartNumber>
-					<CartNumber>Total: ${cartTotal}</CartNumber>
+					<CartNumber>{totals.quantity} Books</CartNumber>
+					<CartNumber>Total: ${totals.price}</CartNumber>
 				</CartNumbers>
 				{logged ? (
 					products?.length ? (
