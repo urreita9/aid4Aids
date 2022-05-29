@@ -28,7 +28,7 @@ ADMIN can CREATE books(already functioning), UPDATE or DELETE. Both update and d
     `
     {
         headers: {
-         authorization: `Bearer ${token}
+         authorization: `Bearer ${token}`
           }
     }
     `
