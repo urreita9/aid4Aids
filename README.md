@@ -2,9 +2,10 @@
     <img src='https://media-exp1.licdn.com/dms/image/C4D0BAQHNsZgUyxwI0w/company-logo_200_200/0/1618588184953?e=2147483647&v=beta&t=43jVmumra31on9vIUOUo6iOyiBVT6yZzB8FQq3usXrI' </img>
 </p>
 
-## Available Scripts
-
-In the project directory, you can run:
+# ECommerce Challenge
+<p align="left">
+  <img height="150" src="./desktopMobile.png" />
+</p>
 
 ### `npm start`
 
