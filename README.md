@@ -35,7 +35,7 @@ ADMIN can CREATE books(already functioning), UPDATE or DELETE them. Both update 
     `
 
 ### Books 
-All books where posted using the Admin form. Please be sure to fill in all inputs and put a correct image url. More validatios to come in the future.
+All books where posted using the Admin form. Please be sure to fill in all inputs and put a correct image url. More validations to come in future stages.
 
 ### About Token security
 The only way to protect tokens from being accessed by any malicious code is to keep them away from the browser. Right now, because this stage was only a frontend project, we stored the Token in `localStorage`.
