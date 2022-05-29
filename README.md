@@ -10,7 +10,7 @@
 
 ### How to run the project locally.
 - clone this repo.
-- `npm install`
+- run command `npm install`
 - go to https://reqres.in/
 - click on the POST - Login (succesfull) option and copy the response Token string.
 - create a .env file and store that Token in a REACT_APP_ACCESS_TOKEN var.
