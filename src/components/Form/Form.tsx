@@ -28,10 +28,10 @@ interface Props {
 	formTitle: string;
 	buttonText: string;
 	action: string;
-	onSubmit: (a: any) => void;
+	onSubmit: (a: MyForm) => void;
 	link?: string;
 	disabled: boolean;
-	validate?: any;
+	validate: (arg: MyForm) => Errors;
 }
 
 const prepareForm = (formArr: Field[]) => {

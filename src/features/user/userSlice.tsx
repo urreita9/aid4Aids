@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { UserData } from '../../components/Login/Login';
+import { Form } from '../../hooks/useForm';
 
 const BASE_URL = 'https://reqres.in/api/login';
 
@@ -21,7 +21,7 @@ const initialState: User = {
 
 export const loginUser = createAsyncThunk(
 	'user/loginUser',
-	async ({ email, password }: UserData) => {
+	async ({ email, password }: Form) => {
 		try {
 			const { data } = await axios.post(BASE_URL, { email, password });
 			if (data.token) {

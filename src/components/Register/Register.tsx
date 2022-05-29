@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { Errors, Form as MyForm } from '../../hooks/useForm';
 import { Form } from '../Form/Form';
 import { RegisterContainer } from './Styled';
 
@@ -45,15 +46,21 @@ export const Register = () => {
 		console.log('register');
 	};
 
-	const validate = (form: UserData) => {
-		let errors: Record<string, string> = {};
-		if (!/\S+@\S+\.\S+/.test(form.email)) {
+	const validate = (form: MyForm) => {
+		let errors: Errors = {};
+		if (form.email === 'string' && !/\S+@\S+\.\S+/.test(form.email)) {
 			errors.email = 'Email address is invalid';
 		}
-		if (!form.password.length || !form.password.trim().length) {
+		if (
+			form.password === 'string' &&
+			(!form.password.length || !form.password.trim().length)
+		) {
 			errors.password = 'Must write a Password';
 		}
-		if (!form.name.length || !form.name.trim().length) {
+		if (
+			form.name === 'string' &&
+			(!form.name.length || !form.name.trim().length)
+		) {
 			errors.name = 'Must write a Name';
 		}
 		return errors;

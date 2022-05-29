@@ -2,13 +2,9 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { loginUser } from '../../features/user/userSlice';
+import { Errors, Form as MyForm } from '../../hooks/useForm';
 import { Form } from '../Form/Form';
 import { LoginContainer } from './Styled';
-
-export interface UserData {
-	email: string;
-	password: string;
-}
 
 export const Login = () => {
 	const dispatch = useAppDispatch();
@@ -38,16 +34,19 @@ export const Login = () => {
 			type: 'password',
 		},
 	];
-	const onSubmit = (form: UserData) => {
+	const onSubmit = (form: MyForm) => {
 		dispatch(loginUser(form));
 	};
 
-	const validate = (form: UserData) => {
-		let errors: Record<string, string> = {};
-		if (!/\S+@\S+\.\S+/.test(form.email)) {
+	const validate = (form: MyForm) => {
+		let errors: Errors = {};
+		if (form.email === 'string' && !/\S+@\S+\.\S+/.test(form.email)) {
 			errors.email = 'Email address is invalid';
 		}
-		if (!form.password.length || !form.password.trim().length) {
+		if (
+			form.password === 'string' &&
+			(!form.password.length || !form.password.trim().length)
+		) {
 			errors.password = 'Must write a Password';
 		}
 		return errors;
