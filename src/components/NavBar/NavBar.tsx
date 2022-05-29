@@ -4,17 +4,23 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../../features/user/userSlice';
 import { Cart } from '../Cart/Cart';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '../Button/Button';
 
 type isOpen = boolean;
 
 export const NavBar = () => {
 	const [isOpen, setIsOpen] = useState<any>(false);
+	const [cartAmount, setCartAmount] = useState(0);
 	const { products } = useAppSelector((state) => state.cart);
 	const { isAdmin, logged } = useAppSelector((state) => state.user);
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
+
+	useEffect(() => {
+		countCartAmount();
+	}, [products]);
+
 	const goTo = (route: string) => {
 		navigate(`${route}`);
 	};
@@ -25,6 +31,14 @@ export const NavBar = () => {
 
 	const toggle = () => {
 		setIsOpen(!isOpen);
+	};
+
+	const countCartAmount = () => {
+		const total = products.reduce(
+			(accum, product) => accum + product.amount,
+			0
+		);
+		setCartAmount(total);
 	};
 
 	return (
@@ -42,7 +56,7 @@ export const NavBar = () => {
 					size={30}
 					style={{ marginRight: '10px' }}
 				/>
-				<CartAmount>{products.length}</CartAmount>
+				<CartAmount>{cartAmount}</CartAmount>
 			</CartContainer>
 			{isOpen && <Cart toggle={toggle} isOpen={isOpen} />}
 		</NavBarContainer>
