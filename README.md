@@ -33,6 +33,12 @@ ADMIN can CREATE books(already functioning), UPDATE or DELETE. Both update and d
     }
     `
 
-
+### About Token security
+The only way to protect tokens from being accessed by any malicious code is to keep them away from the browser. Right now, because this stage was only a frontend project, we stored the Token in `localStorage`.
+On next the stages of the project we should look at the posibility of using a BFF (Backend for Frontend) aproach. 
+As stated in this article: 
+> > Using this approach, all communication from the SPA to the Authorization Server goes via an OAuth Agent component, and tokens will not reach the SPA at all.
+> > As the code for the OAuth Agent is running outside of the browser, it can act as a confidential client for the SPA, further increasing the security of token
+> > issuance. The client will now use some form of authentication (client secret, Mutual TLS, etc.) to retrieve tokens from the Authorization Server.
 
 
