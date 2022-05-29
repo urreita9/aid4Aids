@@ -64,3 +64,13 @@ Although we have both forms, only the login form works by simulating it with a r
 - React
 - State management: redux/toolkit
 - Styles: Styled-Components.
+
+<p align='left'>
+    <img src='./desktopCart.png' </img>
+</p>
+<p align='left'>
+    <img src='./desktopHome.png' </img>
+</p>
+<p align='left'>
+    <img src='./loginMobile.png' </img>
+</p>
