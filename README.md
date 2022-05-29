@@ -8,6 +8,9 @@
   <img height="150" src="./desktopMobile.png" />
 </p>
 
+### Deploy: Vercel
+https://aid4aids.vercel.app/
+
 ### How to run the project locally.
 - clone this repo.
 - run command `npm install`
