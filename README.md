@@ -72,5 +72,5 @@ Although we have both forms, only the login form works by simulating it with a r
     <img src='./desktopHome.png' </img>
 </p>
 <p align='left'>
-    <img src='./loginMobile.png' </img>
+    <img height="150" src='./loginMobile.png' </img>
 </p>
