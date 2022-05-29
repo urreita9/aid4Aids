@@ -42,4 +42,12 @@ As stated in this article:
 > > issuance. The client will now use some form of authentication (client secret, Mutual TLS, etc.) to retrieve tokens from the Authorization Server.
 > > https://curity.io/resources/learn/the-token-handler-pattern/
 
+### About form validations
+Form validations were made really simple due to lack of time. They should be improved in the next stage of the project.
+- Login and register, both check that the email provided is, in fact, an email. 
+- Name, password, and every other field checks that the input isnt made of ' ' and also length is greater than 0.
 
+### Cart functionality
+- You can add any number of items of the products you like. Then, in the cart, you can remove one product or remove all of them.
+- If you are logged in, you'll see the Ckeckout button.
+- If you are not logged in, you will see the Login button. Once you authenticate and return to Home, you will see that cart keeps the products you have added.
