@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useForm } from '../../hooks/useForm';
+import { Errors, Form as MyForm, useForm } from '../../hooks/useForm';
 import { FormTitle } from './Styled';
 import {
 	FormContainer,
@@ -31,6 +31,7 @@ interface Props {
 	onSubmit: (a: any) => void;
 	link?: string;
 	disabled: boolean;
+	validate?: any;
 }
 
 const prepareForm = (formArr: Field[]) => {
@@ -41,20 +42,20 @@ export const Form = ({
 	fieldsArr,
 	formTitle,
 	buttonText,
-	action,
 	onSubmit,
 	link,
 	disabled,
+	validate,
 }: Props) => {
 	const initialForm = useMemo(() => prepareForm(fieldsArr), [fieldsArr]);
 
 	const [linkText, setLinkText] = useState('');
-	const { form, handleInputChange, handleSubmit }: any = useForm(
+	const { form, errors, handleInputChange, handleSubmit } = useForm(
 		{
 			...initialForm,
 		},
 		onSubmit,
-		action
+		validate
 	);
 
 	useEffect(() => {
@@ -79,11 +80,14 @@ export const Form = ({
 							value={form[field.name]}
 							onChange={handleInputChange}
 						/>
+						{errors[field.name] && (
+							<p style={{ color: 'red' }}>{errors[field.name]}</p>
+						)}
 					</FormControl>
 				))}
 			</FormSeparator>
 			<FormSeparator>
-				<SubmitButton onClick={handleSubmit} disabled={disabled}>
+				<SubmitButton onClick={(e) => handleSubmit(e)} disabled={disabled}>
 					{buttonText}
 				</SubmitButton>
 				<br />
