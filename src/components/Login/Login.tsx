@@ -41,6 +41,17 @@ export const Login = () => {
 	const onSubmit = (form: UserData) => {
 		dispatch(loginUser(form));
 	};
+
+	const validate = (form: UserData) => {
+		let errors: Record<string, string> = {};
+		if (!/\S+@\S+\.\S+/.test(form.email)) {
+			errors.email = 'Email address is invalid';
+		}
+		if (!form.password.length || !form.password.trim().length) {
+			errors.password = 'Must write a Password';
+		}
+		return errors;
+	};
 	return (
 		<LoginContainer>
 			<Form
@@ -51,6 +62,7 @@ export const Login = () => {
 				onSubmit={onSubmit}
 				link='register'
 				disabled={false}
+				validate={validate}
 			/>
 			{user.loading && <p>Loading...</p>}
 			{user.error && <p>{user.error}</p>}
