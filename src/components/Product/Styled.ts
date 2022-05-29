@@ -35,6 +35,7 @@ export const ProductISBN = styled.p`
 	margin: 0;
 `;
 export const ProductTitle = styled.p`
+	text-overflow: ellipsis;
 	margin: 0;
 `;
 export const ProductPrice = styled.p`
