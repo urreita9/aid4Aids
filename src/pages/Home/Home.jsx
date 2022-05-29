@@ -1,4 +1,3 @@
-import React from 'react';
 import { useEffect } from 'react';
 import { useAppDispatch } from '../../app/hooks';
 import { NavBar } from '../../components/NavBar/NavBar';
@@ -7,6 +6,8 @@ import {
 	emptyProducts,
 	fetchProducts,
 } from '../../features/products/productsSlice';
+import { checkIfToken } from '../../features/user/userSlice';
+import { HomeTitle } from './Styled';
 
 export const Home = () => {
 	const dispatch = useAppDispatch();
@@ -17,10 +18,14 @@ export const Home = () => {
 			dispatch(emptyProducts());
 		};
 	}, []);
+	useEffect(() => {
+		dispatch(checkIfToken());
+	}, []);
 
 	return (
 		<>
 			<NavBar />
+			<HomeTitle>Welcome to the Story Shop</HomeTitle>
 			<ProductList />
 		</>
 	);
