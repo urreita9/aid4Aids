@@ -30,6 +30,7 @@ ADMIN can CREATE books(already functioning), UPDATE or DELETE. Both update and d
         authorization: `Bearer ${token}
         }
 }
+
 `
 
 The page will reload when you make changes.\
