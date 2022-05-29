@@ -47,7 +47,16 @@ Form validations were made really simple due to lack of time. They should be imp
 - Login and register, both check that the email provided is, in fact, an email. 
 - Name, password, and every other field checks that the input isnt made of ' ' and also length is greater than 0.
 
+### About Register and Login
+Although we have both forms, only the login form works by simulating it with a request to https://reqres.in/api/login, sending an JSON with email and password. Register form is planned to be functioning in a next stage of the project, with the backend and Db running.
+
 ### Cart functionality
 - You can add any number of items of the products you like. Then, in the cart, you can remove one product or remove all of them.
 - If you are logged in, you'll see the Ckeckout button.
 - If you are not logged in, you will see the Login button. Once you authenticate and return to Home, you will see that cart keeps the products that you had added before.
+
+### Techs:
+- Typescript
+- React
+- State management: redux/toolkit
+- Styles: Styled-Components.
