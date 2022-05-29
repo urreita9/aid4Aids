@@ -24,14 +24,14 @@
 ADMIN can CREATE books(already functioning), UPDATE or DELETE. Both update and delete are planned to be working in the second stage of this project. However you could delete a book adding the param "/id" in Postman. You could get the id watching redux devtools.
 - Requests are made to this endpoint: https://crudcrud.com/api/22923a258ece4eba9cb17a0dd9a9f854/unicorns
 - This external api doesn't let us to send headers with the token for authentication, so it will be implementented in the next stage of this project, in conjunction with backend services, looking like: 
-`
-{
-    headers: {
-        authorization: `Bearer ${token}
-        }
-}
 
-`
+    `
+    {
+        headers: {
+         authorization: `Bearer ${token}
+          }
+    }
+    `
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
