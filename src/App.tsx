@@ -5,18 +5,25 @@ import { Register } from './components/Register/Register';
 import { Login } from './components/Login/Login';
 import { Home } from './pages/Home/Home';
 import { Admin } from './pages/Admin/Admin';
-import { Cart } from './pages/Cart/Cart';
+import { RequireAuth } from './Auth/RequireAuth';
 
 function App() {
 	return (
 		<div className='App'>
 			<BrowserRouter>
 				<Routes>
+					<Route path='/' element={<Home />} />
 					<Route path='/register' element={<Register />} />
 					<Route path='/login' element={<Login />} />
-					<Route path='/home' element={<Home />} />
-					<Route path='/admin' element={<Admin />} />
-					<Route path='/cart' element={<Cart />} />
+
+					<Route
+						path='/admin'
+						element={
+							<RequireAuth>
+								<Admin />
+							</RequireAuth>
+						}
+					/>
 				</Routes>
 			</BrowserRouter>
 		</div>

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { fetchData, Methods } from '../../helpers/fetchData';
 import { Field, Form } from '../Form/Form';
 import { Menu } from '../Menu/Menu';
 
@@ -36,8 +37,20 @@ export const BookActions = () => {
 			type: 'text',
 		},
 	];
-	const onSubmit = () => {
-		console.log('Add Book');
+	const addBook = (formValues: any) => {
+		console.log('salio');
+		console.log('form values', formValues);
+		fetchData(
+			'https://crudcrud.com/api/22923a258ece4eba9cb17a0dd9a9f854/unicorns',
+			Methods.POST,
+			{ ...formValues }
+		);
+	};
+	const updateBook = () => {
+		console.log('Update Book');
+	};
+	const deleteBook = () => {
+		console.log('Delete Book');
 	};
 
 	const bookButtons = [
@@ -54,7 +67,8 @@ export const BookActions = () => {
 					formTitle='Add book'
 					buttonText='Add'
 					action='postBook'
-					onSubmit={onSubmit}
+					onSubmit={addBook}
+					disabled={false}
 				/>
 			)}
 			{formType === 'update' && (
@@ -63,7 +77,8 @@ export const BookActions = () => {
 					formTitle='Update book'
 					buttonText='Update'
 					action='postBook'
-					onSubmit={onSubmit}
+					onSubmit={updateBook}
+					disabled={true}
 				/>
 			)}
 			{formType === 'delete' && (
@@ -78,7 +93,8 @@ export const BookActions = () => {
 					formTitle='Delete book'
 					buttonText='Delete'
 					action='postBook'
-					onSubmit={onSubmit}
+					onSubmit={deleteBook}
+					disabled={true}
 				/>
 			)}
 		</>

@@ -59,6 +59,6 @@ export const SubmitButton = styled.button`
 	padding: 10px;
 	color: black;
 	border-width: 0;
-	background-color: #86b2fa;
-	cursor: pointer;
+	background-color: ${(props) => (props.disabled ? 'grey' : '#89CFF0')};
+	cursor: ${(props) => (props.disabled ? '' : 'pointer')}; ;
 `;

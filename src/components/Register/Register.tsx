@@ -1,9 +1,23 @@
-import React from 'react';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Form } from '../Form/Form';
 import { RegisterContainer } from './Styled';
-// import { RegisterContainer, Title, TitleContainer } from './Styled';
 
 export const Register = () => {
+	const user = useAppSelector((state) => state.user);
+	const navigate = useNavigate();
+	const token = localStorage.getItem('token');
+	useEffect(() => {
+		if (user.logged) {
+			navigate('/home');
+		}
+	}, [user]);
+	useEffect(() => {
+		if (token) {
+			navigate('/home');
+		}
+	}, []);
 	const fieldsArr = [
 		{
 			label: 'Email',
@@ -33,6 +47,7 @@ export const Register = () => {
 				action='register'
 				onSubmit={onSubmit}
 				link='login'
+				disabled={false}
 			/>
 		</RegisterContainer>
 	);

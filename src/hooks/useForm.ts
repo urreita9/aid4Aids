@@ -6,6 +6,7 @@ export const useForm = (
 	action: string
 ) => {
 	const [form, setForm] = useState(initialState);
+	const [errors, setErrors] = useState(initialState);
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setForm({ ...form, [e.target.name]: e.target.value });
@@ -13,13 +14,8 @@ export const useForm = (
 
 	const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault();
-		if (action === 'login') {
-			onSubmit(form);
-		} else if (action === 'register') {
-			onSubmit(form);
-		} else {
-			return;
-		}
+
+		onSubmit(form);
 	};
 
 	return { form, handleInputChange, handleSubmit };

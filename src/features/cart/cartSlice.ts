@@ -24,11 +24,13 @@ const cartSlice = createSlice({
 		//Add
 		added(state, action: PayloadAction<Product>) {
 			state.products = [...state.products, action.payload];
+			localStorage.setItem('cart', JSON.stringify(state.products));
 		},
 		//Remove
 		//Empty
 		empty(state) {
 			state.products = [];
+			localStorage.setItem('cart', JSON.stringify(state.products));
 		},
 	},
 });

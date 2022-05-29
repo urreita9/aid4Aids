@@ -20,3 +20,6 @@ export const AdminButton = styled.button`
 	background-color: #86b2fa;
 	cursor: pointer;
 `;
+export const ButtonWrapper = styled.div`
+	display: flex;
+`;

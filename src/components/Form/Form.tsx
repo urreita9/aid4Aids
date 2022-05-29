@@ -30,6 +30,7 @@ interface Props {
 	action: string;
 	onSubmit: (a: any) => void;
 	link?: string;
+	disabled: boolean;
 }
 
 const prepareForm = (formArr: Field[]) => {
@@ -43,6 +44,7 @@ export const Form = ({
 	action,
 	onSubmit,
 	link,
+	disabled,
 }: Props) => {
 	const initialForm = useMemo(() => prepareForm(fieldsArr), [fieldsArr]);
 
@@ -81,7 +83,9 @@ export const Form = ({
 				))}
 			</FormSeparator>
 			<FormSeparator>
-				<SubmitButton onClick={handleSubmit}>{buttonText}</SubmitButton>
+				<SubmitButton onClick={handleSubmit} disabled={disabled}>
+					{buttonText}
+				</SubmitButton>
 				<br />
 
 				{link?.length && (

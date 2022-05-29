@@ -6,10 +6,17 @@ const BASE_URL = 'https://reqres.in/api/login';
 
 type error = string | null;
 
-const initialState: { logged: boolean; error: error; loading: boolean } = {
+interface User {
+	logged: boolean;
+	error: error;
+	loading: boolean;
+	isAdmin: boolean;
+}
+const initialState: User = {
 	logged: false,
 	error: null,
 	loading: false,
+	isAdmin: false,
 };
 
 export const loginUser = createAsyncThunk(
@@ -32,7 +39,22 @@ const userSlice = createSlice({
 	initialState,
 	reducers: {
 		logout(state) {
+			localStorage.removeItem('token');
 			state.logged = false;
+			state.isAdmin = false;
+		},
+		checkIfToken(state) {
+			const token = localStorage.getItem('token');
+			if (token) {
+				state.logged = true;
+				state.isAdmin =
+					JSON.parse(token) === process.env.REACT_APP_ACCESS_TOKEN
+						? true
+						: false;
+			} else {
+				state.logged = false;
+				state.isAdmin = false;
+			}
 		},
 	},
 	extraReducers(builder) {
@@ -42,14 +64,18 @@ const userSlice = createSlice({
 				state.error = null;
 			})
 			.addCase(loginUser.fulfilled, (state, action: any) => {
+				const { token } = action.payload;
 				state.loading = false;
 
-				if (action.payload.token) {
+				if (token) {
 					state.logged = true;
 					state.error = null;
+					state.isAdmin =
+						token === process.env.REACT_APP_ACCESS_TOKEN ? true : false;
 				} else {
 					state.logged = false;
 					state.error = action.payload.response.data.error;
+					state.isAdmin = false;
 				}
 			})
 			.addCase(loginUser.rejected, (state, action: any) => {
@@ -59,6 +85,6 @@ const userSlice = createSlice({
 	},
 });
 
-export const { logout } = userSlice.actions;
+export const { logout, checkIfToken } = userSlice.actions;
 
 export default userSlice.reducer;

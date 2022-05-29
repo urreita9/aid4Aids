@@ -1,11 +1,5 @@
-import React from 'react';
-import { CartProductContainer } from './Styled';
-import {
-	ProductColumn,
-	ProductImage,
-	ProductPrice,
-	ProductTitle,
-} from '../Product/Styled';
+import { CartProductContainer, CartProductImage } from './Styled';
+import { ProductColumn, ProductPrice, ProductTitle } from '../Product/Styled';
 
 interface Props {
 	imgURL: string;
@@ -16,11 +10,11 @@ export const CartProduct = ({ imgURL, title, price }: Props) => {
 	return (
 		<CartProductContainer>
 			<ProductColumn>
-				<ProductImage />
+				<CartProductImage imgURL={`url(${imgURL})`} />
 			</ProductColumn>
 			<ProductColumn>
 				<ProductTitle>{title}</ProductTitle>
-				<ProductPrice>{price}</ProductPrice>
+				<ProductPrice>${price}</ProductPrice>
 			</ProductColumn>
 		</CartProductContainer>
 	);

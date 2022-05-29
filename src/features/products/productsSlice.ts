@@ -1,15 +1,16 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const BASE_URL = 'https://reqres.in/api/users?page=2';
+const BASE_URL =
+	'https://crudcrud.com/api/22923a258ece4eba9cb17a0dd9a9f854/unicorns';
 
 interface Product {
-	id: string;
+	_id: string;
 	isbn: number;
 	title: string;
 	publisher: string;
 	author: string;
-	imgURL: string;
+	imageURL: string;
 	price: number;
 }
 
@@ -30,7 +31,6 @@ export const fetchProducts = createAsyncThunk(
 	async () => {
 		try {
 			const { data } = await axios.get<Product[]>(BASE_URL);
-			console.log('SE HACE EL FETCH', data);
 			return [...data];
 		} catch (error) {
 			return error;
