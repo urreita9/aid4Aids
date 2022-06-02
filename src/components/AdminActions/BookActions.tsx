@@ -5,7 +5,7 @@ import { Field, Form } from '../Form/Form';
 import { Menu } from '../Menu/Menu';
 
 export interface Book {
-	isbn: number;
+	isbn: string;
 	imageURL: string;
 	price: number;
 	title: string;
@@ -49,38 +49,46 @@ export const BookActions = () => {
 
 	const validateAdd = (form: MyForm) => {
 		let errors: Errors = {};
+		const pattern = /^https:\/\//i;
 
-		if (typeof form.isbn === 'number' && form.isbn <= 0) {
+		console.log(form);
+		if (typeof Number(form.isbn) !== 'number' || form.isbn <= 0) {
 			errors.isbn = "ISBN can't be less or equal than 0";
 		}
 
-		if (typeof form.price === 'number' && form.price <= 0) {
+		if (typeof Number(form.price) !== 'number' || form.price <= 0) {
 			errors.price = 'Price is invalid. Must be greater than 0';
 		}
 		if (
-			form.imageURL === 'string' &&
-			(!form.imageURL.length || !form.imageURL.trim().length)
+			typeof form.imageURL !== 'string' ||
+			!form.imageURL.length ||
+			!form.imageURL.trim().length ||
+			!pattern.test(form.imageURL)
 		) {
 			errors.imageURL = 'Image Url address is invalid';
 		}
 		if (
-			form.title === 'string' &&
-			(!form.title.length || !form.title.trim().length)
+			typeof form.title !== 'string' ||
+			form.title.length === 0 ||
+			form.title.trim().length === 0
 		) {
 			errors.title = 'Title is invalid';
 		}
 		if (
-			form.author === 'string' &&
-			(!form.author.length || !form.author.trim().length)
+			typeof form.author !== 'string' ||
+			!form.author.length ||
+			!form.author.trim().length
 		) {
 			errors.author = 'Author is invalid';
 		}
 		if (
-			form.publisher === 'string' &&
-			(!form.publisher.length || !form.publisher.trim().length)
+			typeof form.publisher !== 'string' ||
+			!form.publisher.length ||
+			!form.publisher.trim().length
 		) {
 			errors.publisher = 'Publisher is invalid';
 		}
+
 		return errors;
 	};
 
